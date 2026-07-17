@@ -389,6 +389,19 @@ li { margin: 0.32rem 0; }
   font-size: 0.9rem;
 }
 
+.footer a {
+  color: inherit;
+}
+
+.footer a:hover {
+  color: var(--accent-dark);
+}
+
+.related-site-note {
+  margin-top: 1.25rem;
+  color: var(--muted);
+}
+
 @media (max-width: 900px) {
   .hero,
   .feature-card,
