@@ -10,6 +10,11 @@
   --accent-dark: #1e3a5f;
   --accent-soft: #eaf1fb;
   --accent-cyan: #2d90ae;
+  --jern-violet: #642B92;
+  --jern-aubergine: #2F174F;
+  --jern-wordmark: #321F4F;
+  --jern-lavender: #F6F2FC;
+  --jern-lilac: #D8CBE8;
   --max-width: 1180px;
   --radius: 20px;
   --radius-pill: 999px;
@@ -282,6 +287,17 @@ p { margin: 0 0 1rem; }
 
 .btn-primary:hover { color: white; background: var(--accent-dark); }
 
+.btn-jern {
+  background: var(--jern-violet);
+  color: white;
+  box-shadow: 0 12px 30px rgba(100, 43, 146, 0.22);
+}
+
+.btn-jern:hover {
+  color: white;
+  background: var(--jern-aubergine);
+}
+
 .btn-outline {
   background: rgba(255, 255, 255, 0.8);
   color: var(--accent-dark);
@@ -326,25 +342,66 @@ p { margin: 0 0 1rem; }
   gap: 1rem;
 }
 
-.feature-card {
+ .feature-card {
   display: grid;
-  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
-  gap: 1.25rem;
+  grid-template-columns: minmax(285px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(1.75rem, 3.5vw, 3rem);
   align-items: center;
 }
 
-.logo-panel {
+/* JERN keeps its own purple journal identity inside the ERN Press system. */
+.jern-feature {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.25rem, 2.4vw, 1.8rem);
+}
+
+.jern-feature::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--jern-aubergine), var(--jern-violet), rgba(100, 43, 146, 0));
+}
+
+.cover-panel {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 220px;
-  background: linear-gradient(135deg, rgba(234, 241, 251, 0.9), rgba(255, 255, 255, 0.9));
-  border: 1px solid var(--border);
+  min-height: 410px;
+  padding: clamp(0.8rem, 1.8vw, 1.15rem);
+  background: linear-gradient(145deg, #fbf9ff 0%, var(--jern-lavender) 100%);
+  border: 1px solid var(--jern-lilac);
   border-radius: calc(var(--radius) - 4px);
-  padding: 1.25rem;
 }
 
-.journal-logo { max-height: 125px; width: auto; }
+.journal-cover {
+  display: block;
+  width: min(100%, 305px);
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 44px rgba(47, 23, 79, 0.20);
+}
+
+.jern-feature .kicker {
+  color: var(--jern-aubergine);
+  background: rgba(246, 242, 252, 0.94);
+  border-color: rgba(100, 43, 146, 0.22);
+}
+
+.jern-feature .kicker-dot {
+  background: var(--jern-violet);
+}
+
+.jern-feature h2 {
+  font-size: clamp(1.9rem, 3.15vw, 2.7rem);
+  margin-top: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.jern-feature .btn-row {
+  margin-top: 1.35rem;
+}
 
 ul {
   padding-left: 1.2rem;
@@ -485,5 +542,21 @@ li { margin: 0.32rem 0; }
   .info-list li {
     grid-template-columns: 1fr;
     gap: 0.2rem;
+  }
+}
+
+
+@media (max-width: 820px) {
+  .jern-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .cover-panel {
+    min-height: 0;
+    padding: 1rem;
+  }
+
+  .journal-cover {
+    width: min(100%, 290px);
   }
 }
